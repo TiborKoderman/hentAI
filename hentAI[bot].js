@@ -27,22 +27,22 @@ async function getSauce(link)
     
     if(endres.length == 0)
     {
-      return "Could not find reliable sauce";
+      return "Nisem bil zmožen najti zanesljive omake.";
     }
     console.log('creating embed')
     const embed = new Discord.MessageEmbed()
-    .setTitle('Some spicy sauce comming right up')
+    .setTitle('Mal pekoče omake prihaja takoj')
     .setColor('f089dd')
-    .setDescription('you requested the sauce, you got the sauce')
+    .setDescription('prosil si za omako, dobil boš omako')
     .setThumbnail(endres[0].thumbnail)
-    .addField(`The best sauce from ${endres[0].site}, with confidence of ${endres[0].similarity}%:`, endres[0].url);
+    .addField(`Najboljša omaka iz ${endres[0].site}, z samozavestjo ${endres[0].similarity}%:`, endres[0].url);
 
     endres.shift();
 
     console.log('starting for loop');
     for(res of endres)
     {
-      embed.addField(`Sauce form ${res.site}, with confidence of ${res.similarity}%:`, res.url);
+      embed.addField(`Omaka iz ${res.site}, z samozavestjo ${res.similarity}%:`, res.url);
     } 
     //console.log(embed);
     return embed;
@@ -70,14 +70,14 @@ client.on('message', msg => {
   client.on('message', async msg => {
     const args = msg.content.trim().split(' ');
     let atts = msg.attachments.array();
-    if(args.shift().toLowerCase() === 'sauce?' && args.length == 1 && atts.length == 0)
+    if(args.shift().toLowerCase() === 'omaka?' && args.length == 1 && atts.length == 0)
     {
-      console.log("shouldn't be here");
+      console.log("nebi smel biti tu");
       let tmpsc = await getSauce(args[0]);
-      console.log('got message');
+      console.log('dobil sporocilo');
       msg.channel.send(tmpsc);
     }
-    else if(atts.length > 0 && msg.content === 'sauce?')
+    else if(atts.length > 0 && msg.content === 'omaka?')
     {
       console.log("got in");
       console.log(msg.attachments.array().url);
@@ -85,7 +85,7 @@ client.on('message', msg => {
       //console.log('got message');
       msg.channel.send(tmpsc);
     }
-    else if(msg.content.toLocaleLowerCase() === 'sauce?' && args.length == 0 && atts.length == 0)
+    else if(msg.content.toLocaleLowerCase() === 'omaka?' && args.length == 0 && atts.length == 0)
     {
       msg.channel.messages.fetch({ limit: 30 }).then(async messages => {
         const botMessages = messages.filter(msga => msga.attachments.array().length >0);
@@ -95,7 +95,7 @@ client.on('message', msg => {
         msg.channel.send(temp);
         }
         else
-        msg.channel.send("could not find image in last 30 messages, sorry");
+        msg.channel.send("nisem mogel najti slike v zadnjih 30 sporočilih, oprosti senpai");
       });
 
         
