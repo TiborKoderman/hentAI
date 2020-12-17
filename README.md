@@ -1,5 +1,8 @@
 # hentAI
 
+## About
+Bot for discord that searches for images using the SauceNAO api and the Sagiri npm Wrapper.
+
 ## usage
 
 ### sauce? + attached imagae
