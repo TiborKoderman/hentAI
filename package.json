@@ -4,12 +4,18 @@
   "description": "",
   "main": "hentAI.js",
   "scripts": {
+    "start": "node ./hentAI.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/opus": "^0.4.0",
     "crypt": "^0.0.2",
-    "sagiri": "^3.1.1"
+    "discord.js": "^12.5.1",
+    "ffmpeg": "0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "sagiri": "^3.1.1",
+    "ytdl-core-discord": "^1.2.5"
   }
 }
