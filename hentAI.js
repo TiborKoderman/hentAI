@@ -7,7 +7,8 @@ const sagiri = require('sagiri');
 const { randomInt } = require('crypto');
 const sagiriclient = sagiri(options.SauceToken);
 
-const { playMusic, stopMusic, getQueue } = require('./music.js')
+const { playMusic, stopMusic, getQueue } = require('./music.js');
+const Twitch = require('./twitch');
 
 const client = new Discord.Client();
 
@@ -147,7 +148,6 @@ client.on('message', async msg => {
                 msg.channel.send("could not find image in last 30 messages, sorry");
         });
     }
-
     switch (command) {
         case 'play':
             await playMusic(msg, args2[0])
@@ -161,9 +161,19 @@ client.on('message', async msg => {
         case 'queue':
             getQueue(msg)
             break
-
+        case 'settwitchchannel':
+            twitch.setNotificationChannel(msg);
+            break;
+        case 'settwitchrole':
+            twitch.setNotificationRole(msg);
+            break;
+        case 'test':
+            twitch.notifyUsers();
+            break;
     }
 });
 
 //getSauce(links);
 client.login(options.Token);
+
+const twitch = new Twitch(client);

@@ -13,9 +13,14 @@
     "@discordjs/opus": "^0.4.0",
     "crypt": "^0.0.2",
     "discord.js": "^12.5.1",
+    "fastify": "^3.14.2",
     "ffmpeg": "0.0.4",
     "fluent-ffmpeg": "^2.1.2",
     "sagiri": "^3.1.1",
+    "twitch": "^4.5.5",
+    "twitch-auth": "^4.5.5",
+    "twitch-eventsub": "^4.5.5",
+    "twitch-eventsub-ngrok": "^4.5.5",
     "ytdl-core-discord": "^1.2.5"
   }
 }

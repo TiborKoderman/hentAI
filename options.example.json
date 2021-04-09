@@ -3,5 +3,7 @@
     "SauceToken": "Token",
     "Prefix": "!",
     "TwitchClientID": "",
-    "TwitchClientSecret": ""
+    "TwitchClientSecret": "",
+    "TwitchChannels": [],
+    "TwitchEventSecret": ""
 }
