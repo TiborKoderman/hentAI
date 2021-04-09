@@ -36,24 +36,24 @@ class Twitch {
         options.TwitchChannels.forEach( async (channel) => {
             const user = await this.apiClient.helix.users.getUserByName(channel);
             this.subscriptions.push(
-                await this.listener.subscribeToStreamOnlineEvents(user.id, e => {
-                    this.notifyUsers(e.getBroadcaster())
+                await this.listener.subscribeToStreamOnlineEvents(user.id, async (e) => {
+                    this.notifyUsers(await e.getBroadcaster())
                 })
             );
         });
+        console.log('[TWITCH] Registered all the channels');
     }
 
-    async notifyUsers() {
-        const user = await this.apiClient.helix.users.getUserByName('fomic');
-        const channel = this.discordClient.channels.cache.get(
+    async notifyUsers(user) {
+        const channel = await this.discordClient.channels.fetch(
             this.notificationChannel
         );
-        const role = channel.guild.roles.cache.get(this.notificationRole);
-        const streamTitle = await user.getStream().title;
+        const role = await channel.guild.roles.fetch(this.notificationRole);
+        const streamTitle = (await user.getStream()).title;
         const message = new Discord.MessageEmbed()
             .setColor("#6441a5")
             .setTitle(`${user.displayName} just went live!`)
-            .setURL(`https://twitch.tv${user.name}`)
+            .setURL(`https://twitch.tv/${user.name}`)
             .setThumbnail(user.profilePictureUrl)
             .setDescription(`"${streamTitle}"`)
             .setTimestamp();

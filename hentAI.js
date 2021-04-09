@@ -167,9 +167,6 @@ client.on('message', async msg => {
         case 'settwitchrole':
             twitch.setNotificationRole(msg);
             break;
-        case 'test':
-            twitch.notifyUsers();
-            break;
     }
 });
 
