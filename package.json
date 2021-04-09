@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.4.0",
-    "crypt": "^0.0.2",
     "discord.js": "^12.5.1",
     "fastify": "^3.14.2",
     "ffmpeg": "0.0.4",
