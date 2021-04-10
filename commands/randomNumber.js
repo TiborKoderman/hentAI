@@ -2,7 +2,7 @@ const https = require('https');
 
 async function fetchRandomNumber() {
     const url = await new Promise((resolve, reject) => {
-        https.get('https://nentai.net/random/', res => {
+        https.get('https://nhentai.net/random/', res => {
             if (res.statusCode === 301 || res.statusCode === 302)
                 return resolve(res.headers.location)
 
